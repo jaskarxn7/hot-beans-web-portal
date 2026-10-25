@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hot Beans Web - Apply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Style Sheets/styles.css">
+  <link rel="stylesheet" href="Style Sheets/stylesmobile.css">
+  <link rel="stylesheet" href="Style Sheets/stylesmobile2.css">
+
+</head>
+<body class="bg-[#1B2527] text-white font-sans antialiased">
+
+  
+  <header>
+    <img src="Images/hot beans1.png" alt="Hot Beans Logo" style="height: 80px; width: auto;">
+
+    <div class="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+
+  
+
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="Team.html"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="Course.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+            <li><a href="Apply.html"><i class="fas fa-file-alt"></i> Apply</a></li>
+            <li><a href="Search.html"><i class="fas fa-search"></i> Search Jobs</a></li>
+        </ul>
+    </nav>
+</header>
+
+  <section class="max-w-3xl mx-auto bg-white p-8 mt-48 rounded-lg shadow-xl transform hover:scale-105 transition duration-500">
+    <h2 class="text-4xl font-bold text-center mb-6 text-[#1B2527]">Apply Now</h2>
+    <p class="text-[#1B2527] text-center mb-8">Fill out the form below to apply for our courses.</p>
+
+    <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+      <div id="progressBar" class="bg-[#f7a120] h-2.5 rounded-full" style="width: 0%;"></div>
+    </div>
+
+    <form class="space-y-6" id="applyForm">
+      <div>
+        <label class="block text-lg font-medium text-[#1B2527]">Full Name:</label>
+        <input type="text" id="fullName" class="form-input w-full p-3 border-2 border-[#1B2527] rounded-lg focus:ring-2 focus:ring-[#f7a120] focus:outline-none transition duration-300 text-[#1B2527]" placeholder="Enter your full name" required>
+      </div>
+      <div>
+        <label class="block text-lg font-medium text-[#1B2527]">Email Address:</label>
+        <input type="email" id="email" class="form-input w-full p-3 border-2 border-[#1B2527] rounded-lg focus:ring-2 focus:ring-[#f7a120] focus:outline-none transition duration-300 text-[#1B2527]" placeholder="Enter your email" required>
+      </div>
+      <div>
+        <label class="block text-lg font-medium text-[#1B2527]">Experience in Web Development:</label>
+        <textarea id="experience" class="form-input w-full p-3 border-2 border-[#1B2527] rounded-lg focus:ring-2 focus:ring-[#f7a120] focus:outline-none transition duration-300 text-[#1B2527]" placeholder="Briefly describe your experience" required></textarea>
+      </div>
+      <div>
+        <label class="block text-lg font-medium text-[#1B2527]">Upload Your CV (PDF/DOCX):</label>
+        <input type="file" id="cvUpload" class="form-input w-full p-3 border-2 border-[#1B2527] rounded-lg focus:ring-2 focus:ring-[#f7a120] focus:outline-none transition duration-300" accept=".pdf,.doc,.docx" required>
+      </div>
+      <button type="submit" class="w-full bg-[#f7a120] text-white p-3 rounded-lg hover:bg-[#f7a120] transition duration-300 transform hover:scale-105">Submit Application</button>
+    </form>
+
+    
+    <div id="notification" class="notification">
+      Your application has been successfully submitted!
+    </div>
+  </section>
+
+  
+  <footer class="bg-[#1B2527] text-white mt-16 p-6">
+    <div class="container mx-auto flex flex-wrap justify-between">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="Home.html" class="hover:text-gray-400 transition duration-300">Home</a></li>
+          <li><a href="About.html" class="hover:text-gray-400 transition duration-300">About</a></li>
+          <li><a href="Team.html" class="hover:text-gray-400 transition duration-300">Team</a></li>
+          <li><a href="Course.html" class="hover:text-gray-400 transition duration-300">Courses</a></li>
+          <li><a href="Apply.html" class="hover:text-gray-400 transition duration-300">Apply</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-300 hover:text-gray-500 transition duration-300"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-gray-300 hover:text-gray-500 transition duration-300"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-300 hover:text-gray-500 transition duration-300"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-300 hover:text-gray-500 transition duration-300"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <p>Email: <a href="mailto:contact@hotbeans.com" class="hover:text-gray-400 transition duration-300">contact@hotbeans.com</a></p>
+        <p>Phone: +44 07313904000</p>
+        <p>Address: 123 Web Street, Walsall, WS2 2AP, UK</p>
+      </div>
+    </div>
+    <div class="text-center mt-6 text-gray-400">&copy; 2024 Hot Beans Web. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function updateProgressBar() {
+      let filledFields = 0;
+      let totalFields = 4;
+  
+      if (document.getElementById('fullName').value.trim() !== "") filledFields++;
+      if (document.getElementById('email').value.trim() !== "") filledFields++;
+      if (document.getElementById('experience').value.trim() !== "") filledFields++;
+      if (document.getElementById('cvUpload').files.length > 0) filledFields++;
+  
+      document.getElementById('progressBar').style.width = (filledFields / totalFields) * 100 + '%';
+    }
+  
+    document.querySelectorAll('.form-input').forEach(input => {
+      input.addEventListener('input', updateProgressBar);
+      input.addEventListener('change', updateProgressBar); 
+    });
+  
+    document.getElementById('applyForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+  
+      
+      if (document.getElementById('fullName').value.trim() && 
+          document.getElementById('email').value.trim() && 
+          document.getElementById('experience').value.trim() && 
+          document.getElementById('cvUpload').files.length > 0) {
+        
+        let notification = document.getElementById('notification');
+        notification.classList.add('show-notification'); 
+  
+        
+        setTimeout(function() {
+          notification.classList.remove('show-notification');
+        }, 3000);
+  
+        
+        document.getElementById('applyForm').reset();
+        document.getElementById('progressBar').style.width = '0%'; 
+      } else {
+        alert("Please fill in all the required fields before submitting.");
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navMenu = document.querySelector("nav ul");
+  
+        menuToggle.addEventListener("click", function() {
+            navMenu.classList.toggle("show-menu");
+        });
+    });
+  </script>
+</body>
+</html>

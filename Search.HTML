@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Style Sheets/styles22.css">
+ 
+  <script>
+    
+    function filterJobs() {
+      const searchQuery = document.getElementById("job-listing-searchBar").value.toLowerCase();
+      const jobType = document.getElementById("job-listing-jobType").value.toLowerCase();
+      const jobTime = document.getElementById("job-listing-jobTime").value.toLowerCase();
+      const jobCards = document.querySelectorAll(".job-listing-card");
+
+      jobCards.forEach(card => {
+        const title = card.querySelector(".job-listing-title").textContent.toLowerCase();
+        const type = card.getAttribute("data-type").toLowerCase();
+        const time = card.getAttribute("data-time").toLowerCase();
+
+        
+        if (title.includes(searchQuery) && (jobType === "all" || type.includes(jobType)) && (jobTime === "all" || time.includes(jobTime))) {
+          card.style.display = "block";  
+        } else {
+          card.style.display = "none";  
+        }
+      });
+    }
+
+    
+    function showJobModal(title, description, requirements, salary, jobType) {
+      const modal = document.getElementById('job-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDescription = document.getElementById('modal-description');
+      const modalRequirements = document.getElementById('modal-requirements');
+      const modalSalary = document.getElementById('modal-salary');
+      const modalJobType = document.getElementById('modal-job-type');
+     
+      modalTitle.textContent = title;
+      modalDescription.textContent = description;
+      modalRequirements.textContent = requirements;
+      modalSalary.textContent = `Salary: ${salary}`;
+      modalJobType.textContent = `Job Type: ${jobType}`;
+
+      modal.style.display = "flex";
+    }
+
+    
+    function closeModal() {
+      const modal = document.getElementById('job-modal');
+      modal.style.display = "none";
+    }
+  </script>
+
+  <style>
+    
+    .job-listing-card:hover {
+      transform: scale(1.05);
+      transition: transform 0.4s ease-in-out; 
+    }
+
+    
+    .modal-close {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      background: transparent;
+      border: none;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #f7a120;
+    }
+  </style>
+</head>
+<body class="job-listing-page bg-[#1B2527] text-white font-sans antialiased"> 
+
+  <header id="navbar-header">
+ <img src="Images/hot beans1.png" alt="Hot Beans Logo" style="height: 80px; width: auto;">
+
+ <div class="menu-toggle">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="Team.html"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="Course.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+        <li><a href="Apply.html"><i class="fas fa-file-alt"></i> Apply</a></li>
+        <li><a href="Search.html"><i class="fas fa-search"></i> Search Jobs</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  
+  <header class="hero-header text-center py-24 mt-24">
+    <h2 class="text-4xl font-bold text-white"> 
+      The <span class="text-[#f7a120]">Most Complete</span> Job Listings In The World
+    </h2>
+    <p class="text-gray-400 mt-2">Discover the job you want at top companies</p>
+  </header>
+ 
+  
+  <div class="container mx-auto px-6 flex flex-col md:flex-row gap-8">
+
+    
+    <div class="w-full md:w-1/4 bg-[#1E1E1E] p-6 rounded-lg shadow-md">
+      <h2 class="text-lg font-semibold mb-4">Filter</h2> 
+      <input id="job-listing-searchBar" type="text" class="w-full p-2 rounded bg-[#252525] text-white placeholder-gray-400 focus:ring focus:ring-[#f7a120]" placeholder="Search by keywords" oninput="filterJobs()">
+      <div class="mt-4">
+        <label class="block mb-2 text-sm">Job Type</label>
+        <select id="job-listing-jobType" class="w-full p-2 rounded bg-[#252525] text-white focus:ring focus:ring-[#f7a120]" onchange="filterJobs()">
+          <option value="all">All</option>
+          <option value="frontend">Frontend Developer</option>
+          <option value="backend">Backend Developer</option>
+          <option value="fullstack">Full Stack Developer</option>
+        </select>
+      </div>
+      <div class="mt-4">
+        <label class="block mb-2 text-sm">Job Time</label>
+        <select id="job-listing-jobTime" class="w-full p-2 rounded bg-[#252525] text-white focus:ring focus:ring-[#f7a120]" onchange="filterJobs()">
+          <option value="all">All</option>
+          <option value="remote">Remote</option>
+          <option value="fulltime">Full-time</option>
+          <option value="parttime">Part-time</option>
+        </select>
+      </div>
+    </div>
+
+    
+    <div class="w-full md:w-3/4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+      
+<div class="job-listing-card bg-[#1E1E1E] p-6 rounded-lg shadow-md hover:shadow-lg transition-all" data-type="frontend" data-time="fulltime" onclick="showJobModal('Frontend Developer', 'We are looking for a Frontend Developer to create visually appealing and responsive user interfaces. You will work with a team of designers and backend developers to build seamless user experiences.', 'Skills: HTML, CSS, JavaScript, React, Tailwind CSS. Experience in UI/UX design is a plus.', '£35,000 - £45,000 per year', 'Full-time')">
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="job-listing-title text-xl font-semibold text-[#f7a120]">Frontend Developer</h3>
+    <span class="text-white text-sm">Remote</span>
+  </div>
+  <p class="text-gray-400 mb-4">React, JavaScript, Tailwind</p>
+  <p class="text-gray-400">Full-time</p>
+  <div class="flex justify-between text-xs text-gray-500 mt-4">
+    <span>December 7, 2024</span>
+    <span>£35,000 - £45,000</span>
+  </div>
+</div>
+
+
+<div class="job-listing-card bg-[#1E1E1E] p-6 rounded-lg shadow-md hover:shadow-lg transition-all" data-type="backend" data-time="remote" onclick="showJobModal('Backend Developer', 'Looking for a Backend Developer to handle server-side logic and database management. You will collaborate with frontend developers to integrate user-facing elements with server-side logic.', 'Skills: Node.js, Express, MongoDB, APIs. Experience with RESTful services and API integration is essential.', '£40,000 - £50,000 per year', 'Remote')">
+  <h3 class="job-listing-title text-xl font-semibold text-[#f7a120]">Backend Developer</h3>
+  <p class="text-gray-400 my-4">Node.js, Express, MongoDB</p>
+  <p class="text-gray-400">Remote</p>
+  <div class="flex justify-between text-xs text-gray-500 mt-4">
+    <span>January 17, 2025</span>
+    <span>£40,000 - £50,000</span>
+  </div>
+</div>
+
+
+<div class="job-listing-card bg-[#1E1E1E] p-6 rounded-lg shadow-md hover:shadow-lg transition-all" data-type="fullstack" data-time="parttime" onclick="showJobModal('Full Stack Developer', 'We are looking for a Full Stack Developer who is proficient in both frontend and backend technologies. You will be building a variety of applications from the ground up.', 'Skills: React, Node.js, PostgreSQL, Express. Experience with both front-end and back-end technologies is essential.', '£45,000 - £55,000 per year', 'Part-time')">
+  <h3 class="job-listing-title text-xl font-semibold text-[#f7a120]">Full Stack Developer</h3>
+  <p class="text-gray-400 my-4">React, Node.js, PostgreSQL</p>
+  <p class="text-gray-400">Part-time</p>
+  <div class="flex justify-between text-xs text-gray-500 mt-4">
+    <span>February 17, 2025</span>
+    <span>£45,000 - £55,000</span>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="job-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50" style="display: none;">
+    <div class="modal-content bg-[#121212] text-white p-8 rounded-lg relative max-w-3xl w-full">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3 id="modal-title" class="text-2xl font-bold mb-4"></h3> 
+      <p id="modal-description" class="mb-4 text-lg">Job description goes here...</p>
+      <p id="modal-requirements" class="mb-4 text-sm font-semibold">Requirements: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
+      <p id="modal-salary" class="text-xl mb-4">Salary: $0</p>
+      <p id="modal-job-type" class="text-xl mb-4">Job Type: Full-time</p>
+      <button class="mt-6 w-full bg-[#f7a120] text-white py-2 rounded-md font-semibold" onclick="applyNow()">Apply Now</button>
+    </div>    </div>
+  </div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-nav">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="Home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="Team.html"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="Course.html"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+        <li><a href="Apply.html"><i class="fas fa-file-alt"></i> Apply</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter-square"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>Email: <a href="mailto:contact@hotbeans.com">contact@hotbeans.com</a></p>
+      <p>Phone: +44 07313904000</p>
+      <p>Address: 123 Web Street, Walsall, WS2 2AP, UK</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024 Hot Beans Web. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector("nav ul");
+
+      menuToggle.addEventListener("click", function() {
+          navMenu.classList.toggle("show-menu");
+      });
+  });
+</script>
+
+  
+</body>
+</html>
