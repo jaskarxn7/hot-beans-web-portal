@@ -16,4 +16,4 @@ Tech stack
 - JavaScript
 
  Live App
-Try it here: 
+Try it here: https://jaskarxn7.github.io/Hot-Beans-Web-Portal/
